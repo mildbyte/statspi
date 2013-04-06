@@ -22,27 +22,26 @@ def getTemperature():
     return output[5:] # Skip "temp="
 
 def generatePage():
-    with open("stats.html", 'w') as f:
-        print("<html><head><title>Stats</title></head><body>", file=f)
-        print("<h1>sup</h1><hr><p>", file=f)
-        uptimeLine = "<b>Uptime</b>: " + getUptime() + "<br>"
-        freeSpace = getFreeSpace()
-        freeSpaceLine = "<b>Disk</b>: used " + freeSpace[0].decode("utf-8") + " (" + \
-            freeSpace[2].decode("utf-8") + "), free " + \
-            freeSpace[1].decode("utf-8") + "<br>"
-        temperatureLine = "<b>Temperature</b>: " + getTemperature() + "<br>"
+    print("<html><head><title>Stats</title></head><body>")
+    print("<h1>sup</h1><hr><p>")
+    uptimeLine = "<b>Uptime</b>: " + getUptime() + "<br>"
+    freeSpace = getFreeSpace()
+    freeSpaceLine = "<b>Disk</b>: used " + freeSpace[0].decode("utf-8") + " (" + \
+        freeSpace[2].decode("utf-8") + "), free " + \
+        freeSpace[1].decode("utf-8") + "<br>"
+    temperatureLine = "<b>Temperature</b>: " + getTemperature() + "<br>"
 
-        print(uptimeLine, file=f)
-        print(freeSpaceLine, file=f)
-        print(temperatureLine, file=f)
+    print(uptimeLine)
+    print(freeSpaceLine)
+    print(temperatureLine)
 
-        print("</p>", file=f)
+    print("</p>")
 
-        print("<small>Page generated on " + str(datetime.now().date()) + \
-            " at " + str(datetime.now().time()) + \
-            " by a silly static static page generator written in \
-            Python.<br>", file=f)
-        print("Static used twice deliberately.</small>", file=f)
-        print("</body></html>", file=f)
+    print("<small>Page generated on " + str(datetime.now().date()) + \
+        " at " + str(datetime.now().time()) + \
+        " by a silly static static page generator written in \
+        Python.<br>")
+    print("Static used twice deliberately.</small>")
+    print("</body></html>")
 
 generatePage()
