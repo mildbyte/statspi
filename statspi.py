@@ -29,7 +29,7 @@ def generatePage():
     freeSpaceLine = "<b>Disk</b>: used " + freeSpace[0].decode("utf-8") + " (" + \
         freeSpace[2].decode("utf-8") + "), free " + \
         freeSpace[1].decode("utf-8") + "<br>"
-    temperatureLine = "<b>Temperature</b>: " + getTemperature() + "<br>"
+    temperatureLine = "<b>Temperature</b>: " + getTemperature().decode("utf-8") + "<br>"
 
     print(uptimeLine)
     print(freeSpaceLine)
