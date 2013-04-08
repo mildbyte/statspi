@@ -2,6 +2,11 @@
 # to be served on a Web page (uptime/free disk space/temperature etc)
 from datetime import timedelta, datetime
 import subprocess
+from random import randrange
+
+def getRandomLine(path):
+    lines = open(path).read().split('\n')
+    return lines[randrange(len(lines))]
 
 def getUptime():
     with open("/proc/uptime", 'r') as f:
@@ -22,8 +27,9 @@ def getTemperature():
     return output[5:] # Skip "temp="
 
 def generatePage():
+    quote = getRandomLine("quotes.txt")
     print("<html><head><title>Stats</title></head><body>")
-    print("<h1>sup</h1><hr><p>")
+    print("<h1>" + quote + "</h1><hr><p>")
     uptimeLine = "<b>Uptime</b>: " + getUptime() + "<br>"
     freeSpace = getFreeSpace()
     freeSpaceLine = "<b>Disk</b>: used " + freeSpace[0].decode("utf-8") + " (" + \
